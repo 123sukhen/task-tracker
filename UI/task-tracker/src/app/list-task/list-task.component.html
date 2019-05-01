@@ -1,0 +1,57 @@
+<div class="col-md-12">
+  <h2> Task Details</h2>
+  <button class="btn btn-danger" (click)="addUser()"> Add Task</button>
+
+ <table>
+<div class="form-group">
+  <td><label for="parent_task">Task:</label>
+  <input type="text" [(ngModel)]="userFilter.task" placeholder="task search" class="form-control"></td>
+  <td><label for="parent_task">Parent Task:</label>
+  <input type="text" [(ngModel)]="userFilter.parent_task" placeholder="parent task search" class="form-control"></td>
+</div>
+
+
+<div class="form-group">
+ <td> <label for="parent_task">Priority:</label>
+  <input type="text" [(ngModel)]="userFilter.priority" placeholder="priority search" class="form-control"></td>
+ 
+  <td><label for="parent_task">Start Date:</label>
+  <input type="text" [(ngModel)]="userFilter.start_date" placeholder="start date search" class="form-control">
+  
+  </td>
+  <td><label for="parent_task">End Date:</label>
+  <input type="text" [(ngModel)]="userFilter.end_date" placeholder="end date search"  class="form-control"></td>
+
+  </div> 
+ 
+ </table> 
+  <table class="table table-striped">
+    <thead>
+    <tr>
+    
+      <th>Task</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Priority</th>
+	  <th>Parent Task</th>
+	
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users  | filterBy: userFilter">
+     
+      <td>{{user.task}}</td>
+      <td>{{user.start_date}}</td>
+	  <td>{{user.end_date}}</td>
+	  <td>{{user.priority}}</td>
+	  <td>{{user.parent_task}}</td>
+	  
+  		 
+		 <td> <button *ngIf="user.finished == 'N'" class="btn btn-danger"(click)="deleteUser(user)" style="margin-left: 500px;" > Delete</button></td>
+       <td> <button  *ngIf="user.finished == 'N'" class="btn btn-danger" (click)="editUser(user)" style="margin-left: -10px;"> Edit</button></td>
+		 <td><button *ngIf="user.finished == 'N'" class="btn btn-danger" (click)="finishTask(user)"  style="margin-left: 20px;"> End Tasks</button></td>
+		 
+    </tr>
+    </tbody>
+  </table>
+</div>

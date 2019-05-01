@@ -1,0 +1,35 @@
+<div class="col-md-6">
+  <h2 class="text-center">Edit Task</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  
+    
+	<div class="form-group">
+      <label for="task">Task:</label>
+      <input formControlName="task"  name="task" class="form-control" id="task">
+    </div>
+	
+
+    <div class="form-group">
+	<label for="priority">Priority:</label>
+	<input type="hidden"[(ngModel)]="priority" formControlName="priority" name="priority" class="form-control" id="priority">
+    <ng5-slider [(value)]="priority" [options]="options" ></ng5-slider>	
+   </div>
+
+    <div class="form-group">
+      <label for="parent_task">Parent Task:</label>
+      <input formControlName="parent_task"  name="parent_task " class="form-control" id="parent_task">
+    </div>
+	
+	<div class="form-group">
+      <label for="start_date">Start Date:</label>
+      <input formControlName="start_date"  name="start_date" class="form-control" id="start_date">
+    </div>
+	<div class="form-group">
+      <label for="end_date">End Date:</label>
+      <input formControlName="end_date"  	name="end_date" class="form-control" id="end_date">
+    </div>
+
+    <button class="btn btn-success">Update</button>
+	 <button class="btn btn-failure">Cancel</button>
+  </form>
+</div>
